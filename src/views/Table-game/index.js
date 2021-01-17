@@ -2,6 +2,7 @@ import "./index.css";
 import React, { useState, useEffect } from "react";
 import { GameHeader } from "../../components/game-header/index";
 import { GameContent } from "../../components/game-content/index";
+import { GameFooter } from "../../components/game-footer/index";
 import axios from "axios";
 
 export const TableGame = (props) => {
@@ -32,16 +33,12 @@ export const TableGame = (props) => {
       id,
       img,
     }
-
     setState({
       charState: updateCharState,
     });
   }
 
   function handleFlip(pos, id, img) {
-
-    console.log(validatePair.pairId);
-
     if(validatePair.pairId !== null) {
       changeState(true, pos, id, img);
       if (state.charState[pos].id === validatePair.pairId) {
@@ -85,7 +82,7 @@ export const TableGame = (props) => {
   }
 
   useEffect(() => {
-    fetchData()
+    fetchData();
   },[])
 
   console.log(state.charState);
@@ -93,10 +90,8 @@ export const TableGame = (props) => {
   const fetchData = async () => {
     const pageRamdom = Math.floor(Math.random()*34);
     const { data: { results } } = await axios.get(`https://rickandmortyapi.com/api/character/?page=${pageRamdom}`);
-
     const duplicateData = results.concat(results);
     const shuffleData = duplicateData.sort(() => Math.random() - 0.5);
-
     let initialstate = [];
 
     for (let i=0; i < shuffleData.length; i++) {
@@ -110,6 +105,14 @@ export const TableGame = (props) => {
     setState({
       charState: initialstate,
     });
+    setScore({
+      attempts: 0
+    });
+    setValidatePair({
+      pairId: null,
+      position: null,
+      img: null
+    });
   }
 
   return (
@@ -117,7 +120,12 @@ export const TableGame = (props) => {
       <GameHeader
         attempts={score.attempts}
         playername={playername}/>
-      <GameContent characters={state.charState} handleFlip={handleFlip} click={clickState.click}/>
+      <GameContent
+        characters={state.charState}
+        handleFlip={handleFlip}
+        click={clickState.click}
+      />
+      <GameFooter restartGame={fetchData}/>
     </section>
   )
 }
