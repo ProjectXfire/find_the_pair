@@ -134,7 +134,7 @@ export const TableGame = (props) => {
       <GameFooter restartGame={fetchData}/>
       <Modal
         size="tiny"
-        open={score.toWin === 1}
+        open={score.toWin === 20}
       >
         <Modal.Header>YOU WIN {playername}!</Modal.Header>
         <Modal.Content>
