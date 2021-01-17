@@ -9,8 +9,8 @@ export const GameFooter = ({ restartGame }) => {
 
   return (
     <div className="GameFooter">
-      <Button color='violet' onClick={() => restartGame()}>Restart</Button>
-      <Button color='green' onClick={() => history.push('/home')}>Return</Button>
+      <Button className="GameFooter__button" color='violet' onClick={() => restartGame()}>Restart</Button>
+      <Button className="GameFooter__button" color='green' onClick={() => history.push('/home')}>Return</Button>
   </div>
   )
 }

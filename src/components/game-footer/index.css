@@ -3,3 +3,7 @@
   margin-top: 20px;
   justify-content: center;
 }
+
+.GameFooter__button:active {
+  transform: scale(0.9);
+}
