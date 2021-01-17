@@ -1,0 +1,17 @@
+.GameHeader {
+  display: flex;
+  margin-bottom: 20px;
+  justify-content: space-around;
+  background-color: blueviolet;
+  border-radius: 20px;
+  color: white;
+}
+
+.GameHeader h1 {
+  font-size: 3vw;
+  text-align: center;
+}
+
+.GameHeader h1 p {
+  color: rgb(17, 184, 26);
+}

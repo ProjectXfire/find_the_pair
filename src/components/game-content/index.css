@@ -1,0 +1,50 @@
+.GameContent {
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: rgb(71, 120, 255);
+}
+
+.GameContent__cards {
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 15px;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+}
+
+.GameContent__cards li {
+  list-style: none;
+}
+
+.GameContent__cards img {
+  width: 100%;
+  border-radius: 15px;
+}
+
+.on {
+  animation: flippedOn 0.7s;
+}
+
+.off {
+  animation: flippedOff 0.7s;
+}
+
+@keyframes flippedOn {
+  0% {
+    transform: rotateY(0deg);
+  }
+  100% {
+    transform: rotateY(360deg);
+  }
+}
+
+@keyframes flippedOff {
+  0% {
+    transform: rotateY(0deg);
+  }
+  100% {
+    transform: rotateY(360deg);
+  }
+}
